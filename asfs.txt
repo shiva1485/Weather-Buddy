@@ -1,0 +1,10 @@
+ <a href="index.html"style="color: aliceblue; text-decoration: none;  margin-right: 50px;">News</a>
+            <a href="test-maps.html"style="color: aliceblue; text-decoration: none; margin-right: 50px;">Maps</a>
+            <a href="india.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Climate Topics</a>
+            <a href="index.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Events</a>
+            <a href="video.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Video</a>
+            <a href="/world.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Forum</a>
+            <a href="donations.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Donations</a>
+            <a href="index.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Trends</a>
+            <a href="real-time.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Real-Time</a>
+            <a href="UserLogin.html"style="color: aliceblue; text-decoration: none;">Sign in</a>

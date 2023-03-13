@@ -1,0 +1,63 @@
+#explore {
+    width: 100%;
+    background-color: #000000;
+    float: left;
+    border-top: 1px solid #949494;
+    
+}
+.explore2 {
+    margin: 10px 0px 10px 145px;
+}
+#exploreHeading {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+.explore3 {
+    margin: 10px 0px 10px 145px;
+    float: left;
+}
+.explore3 a {
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 30px;
+}
+.explore3 a:hover {
+    text-decoration: underline;
+}
+.explore4 {
+    border-left: 1px solid #949494;
+    margin-left: 110px;
+    
+}
+.explore4 a {
+    margin-left: 20px;
+}
+#xHr {
+    width: 1050px;
+    height: 1px;
+    border: 0px;
+    float: left;
+    margin-left: 145px;
+    background-color: #949494;
+}
+#fotter {
+    float: left;
+    margin-left: 145px;
+    margin-top: 0px;
+}
+#fotter p a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    margin-right: 22px;
+}
+#fotter p {
+    color: white;
+    font-size: 14px;
+}
+#fotter p a:hover {
+    text-decoration: underline;
+}

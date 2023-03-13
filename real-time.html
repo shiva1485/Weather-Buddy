@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Local Weather Viewer</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="about_us.css">
+</head>
+
+<body>
+	<div style="background-color: black; width: 100%; height: 50px;">
+        <div style="display: inline-block;">
+            <a href="index.html"><img src="images/prevent.png" style="width: 32px; height: 32px; margin-right: 100px;margin-top: 10px; margin-left: 30px;"></a>
+        </div>
+
+        <div style="display: inline-block;">
+            <a href="index.html"style="color: aliceblue; text-decoration: none;  margin-right: 50px;">News</a>
+            <a href="test-maps.html"style="color: aliceblue; text-decoration: none; margin-right: 50px;">Maps</a>
+            <a href="india.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Climate Topics</a>
+            <a href="index.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Events</a>
+            <a href="video.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Video</a>
+            <a href="/world.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Forum</a>
+            <a href="donations.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Donations</a>
+            <a href="index.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Trends</a>
+            <a href="real-time.html"style="color: aliceblue; text-decoration: none;margin-right: 50px;">Real-Time</a>
+            <a href="UserLogin.html"style="color: aliceblue; text-decoration: none;">Sign in</a>
+        </div>
+    </div>
+	<section id="dailyForecast">
+		<div class="container">
+
+			<div class="row justify-content-center searchBar">
+				<div class="col-10 col-lg-8">
+					<input type="text" name="locSearchBox" id="locSearchBox">
+				</div>
+			</div>
+
+			<div class="row justify-content-around">
+
+				<div class="col-10 col-lg-5 tempBox text-center">
+					<i class="icon ion-location"></i>
+					<p><span class="locName">Your Location Here</span></p>
+					<canvas id="weatherIcon" width="100" height="100"></canvas>
+					<p class="m0"><span class="weatherCondition">...</span></p>
+					<p class="m0"><span class="currentTemp"></span><span class="unit">°C</span></p>
+					<p class="feels"><i class="wi wi-barometer"></i> Feels Like: <span class="feelsLike">...</span></p>
+					<p class="convertToggle">°C <i class="icon ion-toggle toggleIcon"></i> °F</p>
+					<div class="row tempBoxSubInfo">
+						<div class="col">
+							<p><i class="wi wi-windy"></i>
+								Wind Speed: <span class="windSpeed">...</span> km/s
+							</p>
+						</div>
+						<div class="col">
+							<p><i class="wi wi-humidity"></i>
+								Humidity: <span class="humidity">...</span> %
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 col-sm-12 col-md-10 col-lg-7 col-xl-6 dashboard text-center">
+
+					<div class="row justify-content-center dashboardDaily">
+						<div class="col-3 tempMaxBox">
+							<p><i class="icon ion-arrow-graph-up-left"></i><br>
+								<span class="tempMax text-left"></span>
+							</p>
+						</div>
+						<div class="col-6 expect text-center">
+							<canvas id="expectIcon" width="80" height="80"></canvas> <br>
+							<p class="text-center thin">Expect <span class="todaySummary">...</span></p>
+						</div>
+						<div class="col-3 tempMinBox">
+							<p><span class="tempMin text-right"></span><br>
+								<i class="icon ion-arrow-graph-down-right"></i>
+							</p>
+						</div>
+					</div>
+
+					<div class="row sunTimes justify-content-center">
+						<div class="col sunrise">
+							<p><i class="wi wi-sunrise"></i> <span class="sunriseTime"></span></p>
+						</div>
+						<div class="col sunset">
+							<p><i class="wi wi-sunset"></i> <span class="sunsetTime"></span></p>
+						</div>
+						<div class="col">
+							<p><i class="wi wi-day-cloudy-high"></i> <span class="cloudCover"></span></p>
+						</div>
+						<div class="col">
+							<p><i class="wi wi-raindrop"></i> <span class="dewPoint"></span></p>
+						</div>
+					</div>
+
+					<div class="row weatherQuote text-center">
+						<div class="col">
+							<p class="quote">"There is no such thing as bad weather, only different kinds of good weather." -John Ruskin</p>
+						</div>
+					</div>
+
+					<div class="row justify-content-center weeklyButton">
+						<div class="col-12 col-md-5 wow fadeInUp" data-wow-delay="1s">
+							<a href="#weeklyForecast" class="goToWeek">Weekly Forecast <i class="icon ion-ios-arrow-down"></i></a>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<section id="weeklyForecast">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-10 text-center">
+					<h3>Next Six Days: <span class="weekDaysSummary"></span></h3>
+				</div>
+			</div>
+
+			<div class="row justify-content-around weekRows">
+				<div class="col-10 col-lg-5 dayCard text-center wow fadeInUp"  data-wow-delay="0.2s">
+					<div class="row">
+						<div class="col-5 dayIconHighlight">
+							<canvas id="weatherIcon1" width="100" height="100"></canvas>
+							<div class="dayMaxMin">
+								<p><i class="icon ion-arrow-graph-up-left"></i><span class="weekDayTempMax1"></span>°C</p>
+								<p><span class="weekDayTempMin1"></span>°C<i class="icon ion-arrow-graph-down-right"></i></p>
+							</div>
+						</div>
+						<div class="col-7 dayInfoHighlight">
+							<div class="row">
+								<div class="col-12 weekDay">
+									<p class="weekDayName1">Day</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySummary">
+									<p class="weekDaySummary1">Days Info</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySun">
+									<p><i class="wi wi-sunrise"></i> <span class="weekDaySunrise1"></span> AM</p>
+									<p><i class="wi wi-sunset"></i> <span class="weekDaySunset1"></span> PM</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col weekDayWindnHumidity">
+									<p><i class="wi wi-windy"></i> <span class="weekDayWind1"></span> km/s</p>
+									<p><i class="wi wi-humidity"></i> <span class="weekDayHumid1"></span>%</p>
+									<p><i class="wi wi-day-cloudy-high"></i> <span class="weekDayCloud1"></span>%</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-10 col-lg-5 dayCard text-center wow fadeInUp" data-wow-delay="0.4s">
+					<div class="row">
+						<div class="col-5 dayIconHighlight">
+							<canvas id="weatherIcon2" width="100" height="100"></canvas>
+							<div class="dayMaxMin">
+								<p><i class="icon ion-arrow-graph-up-left"></i><span class="weekDayTempMax2"></span>°C</p>
+								<p><span class="weekDayTempMin2"></span>°C<i class="icon ion-arrow-graph-down-right"></i></p>
+							</div>
+						</div>
+						<div class="col-7 dayInfoHighlight">
+							<div class="row">
+								<div class="col-12 weekDay">
+									<p class="weekDayName2">Day</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySummary">
+									<p class="weekDaySummary2">Days Info</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySun">
+									<p><i class="wi wi-sunrise"></i> <span class="weekDaySunrise2"></span> AM</p>
+									<p><i class="wi wi-sunset"></i> <span class="weekDaySunset2"></span> PM</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col weekDayWindnHumidity">
+									<p><i class="wi wi-windy"></i> <span class="weekDayWind2"></span> km/s</p>
+									<p><i class="wi wi-humidity"></i> <span class="weekDayHumid2"></span>%</p>
+									<p><i class="wi wi-day-cloudy-high"></i> <span class="weekDayCloud2"></span>%</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-around weekRows">
+				<div class="col-10 col-lg-5 dayCard text-center wow fadeInUp" data-wow-delay="0.2s">
+					<div class="row">
+						<div class="col-5 dayIconHighlight">
+							<canvas id="weatherIcon3" width="100" height="100"></canvas>
+							<div class="dayMaxMin">
+								<p><i class="icon ion-arrow-graph-up-left"></i><span class="weekDayTempMax3"></span>°C</p>
+								<p><span class="weekDayTempMin3"></span>°C<i class="icon ion-arrow-graph-down-right"></i></p>
+							</div>
+						</div>
+						<div class="col-7 dayInfoHighlight">
+							<div class="row">
+								<div class="col-12 weekDay">
+									<p class="weekDayName3">Day</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySummary">
+									<p class="weekDaySummary3">Days Info</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySun">
+									<p><i class="wi wi-sunrise"></i> <span class="weekDaySunrise3"></span> AM</p>
+									<p><i class="wi wi-sunset"></i> <span class="weekDaySunset3"></span> PM</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col weekDayWindnHumidity">
+									<p><i class="wi wi-windy"></i> <span class="weekDayWind3"></span> km/s</p>
+									<p><i class="wi wi-humidity"></i> <span class="weekDayHumid3"></span>%</p>
+									<p><i class="wi wi-day-cloudy-high"></i> <span class="weekDayCloud3"></span>%</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-10 col-lg-5 dayCard text-center wow fadeInUp"  data-wow-delay="0.4s">
+					<div class="row">
+						<div class="col-5 dayIconHighlight">
+							<canvas id="weatherIcon4" width="100" height="100"></canvas>
+							<div class="dayMaxMin">
+								<p><i class="icon ion-arrow-graph-up-left"></i><span class="weekDayTempMax4"></span>°C</p>
+								<p><span class="weekDayTempMax4"></span>°C<i class="icon ion-arrow-graph-down-right"></i></p>
+							</div>
+						</div>
+						<div class="col-7 dayInfoHighlight">
+							<div class="row">
+								<div class="col-12 weekDay">
+									<p class="weekDayName4">Day</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySummary">
+									<p class="weekDaySummary4">Days Info</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySun">
+									<p><i class="wi wi-sunrise"></i> <span class="weekDaySunrise4"></span> AM</p>
+									<p><i class="wi wi-sunset"></i> <span class="weekDaySunset4"></span> PM</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col weekDayWindnHumidity">
+									<p><i class="wi wi-windy"></i> <span class="weekDayWind4"></span> km/s</p>
+									<p><i class="wi wi-humidity"></i> <span class="weekDayHumid4"></span>%</p>
+									<p><i class="wi wi-day-cloudy-high"></i> <span class="weekDayCloud4"></span>%</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-around weekRows">
+				<div class="col-10 col-lg-5 dayCard text-center wow fadeInUp" data-wow-delay="0.2s">
+					<div class="row">
+						<div class="col-5 dayIconHighlight">
+							<canvas id="weatherIcon5" width="100" height="100"></canvas>
+							<div class="dayMaxMin">
+								<p><i class="icon ion-arrow-graph-up-left"></i><span class="weekDayTempMax5"></span>°C</p>
+								<p><span class="weekDayTempMax5"></span>°C<i class="icon ion-arrow-graph-down-right"></i></p>
+							</div>
+						</div>
+						<div class="col-7 dayInfoHighlight">
+							<div class="row">
+								<div class="col-12 weekDay">
+									<p class="weekDayName5">Day</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySummary">
+									<p class="weekDaySummary5">Days Info</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySun">
+									<p><i class="wi wi-sunrise"></i> <span class="weekDaySunrise5"></span> AM</p>
+									<p><i class="wi wi-sunset"></i> <span class="weekDaySunset5"></span> PM</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col weekDayWindnHumidity">
+									<p><i class="wi wi-windy"></i> <span class="weekDayWind5"></span> km/s</p>
+									<p><i class="wi wi-humidity"></i> <span class="weekDayHumid5"></span>%</p>
+									<p><i class="wi wi-day-cloudy-high"></i> <span class="weekDayCloud5"></span>%</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-10 col-lg-5 dayCard text-center wow fadeInUp"  data-wow-delay="0.4s">
+					<div class="row">
+						<div class="col-5 dayIconHighlight">
+							<canvas id="weatherIcon6" width="100" height="100"></canvas>
+							<div class="dayMaxMin">
+								<p><i class="icon ion-arrow-graph-up-left"></i><span class="weekDayTempMax6"></span>°C</p>
+								<p><span class="weekDayTempMax6"></span>°C<i class="icon ion-arrow-graph-down-right"></i></p>
+							</div>
+						</div>
+						<div class="col-7 dayInfoHighlight">
+							<div class="row">
+								<div class="col-12 weekDay">
+									<p class="weekDayName6">Day</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySummary">
+									<p class="weekDaySummary6">Days Info</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 weekDaySun">
+									<p><i class="wi wi-sunrise"></i> <span class="weekDaySunrise6"></span> AM</p>
+									<p><i class="wi wi-sunset"></i> <span class="weekDaySunset6"></span> PM</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col weekDayWindnHumidity">
+									<p><i class="wi wi-windy"></i> <span class="weekDayWind6"></span> km/s</p>
+									<p><i class="wi wi-humidity"></i> <span class="weekDayHumid6"></span>%</p>
+									<p><i class="wi wi-day-cloudy-high"></i> <span class="weekDayCloud6"></span>%</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="footer">
+		 <!--weather buddy explore section-->
+    <div id="explore">
+        <div class="explore2">
+            <p id="exploreHeading">
+                Explore the Weather Buddy
+            </p>
+        </div>
+        <div class="explore3">
+            <a href="index.html">Home</a><br>
+            <a href="index.html">News</a><br>
+            <a href="maps.html">Maps</a><br>
+            <a href="climate-topics.html">Climate Topics</a>
+        </div>
+        <div class="explore3 explore4">
+            <a href="events.html">Events</a><br>
+            <a href="videos.html">Videos</a><br>
+            <a href="forum.html">Forum</a><br>
+            <a href="donations.html">Donations</a>
+        </div>
+        <div class="explore3 explore4">
+            <a href="trends.html">Trends</a><br>
+            <a href="real-time.html">Real-Time</a><br>
+            <a href="UserLogin.html">Sign-in</a><br>
+            <a href="about_us.html">About Us</a>
+        </div>
+        <hr id="xHr">
+        <div id="fotter">
+            <p>
+                <a href="http://">Terms of Use</a>
+                <a href="http://">About the Weather Buddy</a>
+                <a href="http://">Privacy Policy</a>
+                <a href="http://">Cookies</a>
+                <a href="http://">Accessibility Help</a>
+                <a href="http://">Parental Guidance</a>
+                <a href="http://">Contact the Weather Buddy</a>
+                <a href="http://">Get Personalised Newsletters</a>
+            </p>
+            <p>Copyright &copy 2023 Weather Buddy.
+            </p>
+        </div>
+        
+    </div>
+	</section>
+	
+	<!-- Scripts -->
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRy10Lo6ZYc3ajRn2jZSRrKYn1iV08avQ&libraries=places"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+	<script type="text/javascript">new WOW().init();</script>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>
